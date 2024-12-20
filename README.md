@@ -111,6 +111,7 @@ The Car Management System is a RESTful application designed to manage cars and t
 - **Description**: Fetches cars sorted by a specified field.
 - **Request Parameters**:
   - `sortBy` (default: `carName`): Field to sort by.
+  - `order` (default: `asc`): Sorting order. (`asc` or `desc`)
 - **Response**: Returns a sorted list of cars.
 
 ### 8. Get Cars with Pagination and Sorting
@@ -121,7 +122,7 @@ The Car Management System is a RESTful application designed to manage cars and t
   - `page` (default: 0): Page number.
   - `size` (default: 10): Number of records per page.
   - `sortBy` (default: `carName`): Field to sort by.
-  - `order` (default: `asc`): Sorting order.
+  - `order` (default: `asc`): Sorting order. (`asc` or `desc`)
 - **Response**: Returns a paginated and sorted list of cars.
 
 ## Validations
