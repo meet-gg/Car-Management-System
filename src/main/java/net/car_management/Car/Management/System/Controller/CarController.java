@@ -2,6 +2,7 @@ package net.car_management.Car.Management.System.Controller;
 
 import jakarta.validation.Valid;
 import net.car_management.Car.Management.System.DTO.CarDTO;
+import net.car_management.Car.Management.System.Exception.ResourceNotFoundException;
 import net.car_management.Car.Management.System.Models.Car;
 import net.car_management.Car.Management.System.Services.CarServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Year;
 import java.util.List;
@@ -59,6 +61,9 @@ public class CarController {
             @RequestParam(required = false) String fuelType
     ) {
         List<Car> cars = carServices.searchCars(name, model, year, color, fuelType);
+        if (cars.isEmpty()){
+            throw new ResourceNotFoundException("Car not found with given field");
+        }
         return ResponseEntity.ok(cars);
     }
 
