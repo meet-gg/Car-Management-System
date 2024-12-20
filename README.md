@@ -65,6 +65,12 @@ The Car Management System is a RESTful application designed to manage cars and t
     - Hybrid
     - CNG
     - LPG
+    - petrol
+    - diesel
+    - electric
+    - hybrid
+    - cng
+    - lpg
 
 ### 3. Update Car by ID
 - **URL**: `https://car-management-system-production.up.railway.app/api/cars/updateCarById/{id}`
