@@ -1,5 +1,6 @@
 package net.car_management.Car.Management.System.Services;
 
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import net.car_management.Car.Management.System.DTO.CarDTO;
 import net.car_management.Car.Management.System.Exception.ResourceNotFoundException;
@@ -25,10 +26,13 @@ public class CarServices {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Transactional
     public List<CarDTO> getAllCars() {
         List<Car> cars = carRepository.findAll();
         return cars.stream().map(car -> modelMapper.map(car, CarDTO.class)).collect(Collectors.toList());
     }
+
+    @Transactional
     public List<CarDTO> addCars(List<@Valid CarDTO> cars) {
         List<Car> carEntities = cars.stream()
                 .map(carDTO -> modelMapper.map(carDTO, Car.class))
@@ -38,7 +42,7 @@ public class CarServices {
                 .map(car -> modelMapper.map(car, CarDTO.class))
                 .collect(Collectors.toList());
     }
-
+    @Transactional
     public CarDTO updateCarById(Long id, CarDTO carDTO) {
         Car excar = carRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Car not found with ID: " + id));
@@ -48,6 +52,7 @@ public class CarServices {
         return modelMapper.map(updatedCar, CarDTO.class);
     }
 
+    @Transactional
     public CarDTO deleteCarById(Long id) {
         Car car = carRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Car not found with ID: " + id));
@@ -56,10 +61,12 @@ public class CarServices {
         return carDTO;
     }
 
+    @Transactional
     public List<Car> searchCars(String name, String model, Year year, String color, String fuelType) {
         return carRepository.searchCars(name, model, year, color, fuelType);
     }
 
+    @Transactional
     public Page<Car> getCarsWithPagination(int page, int size) {
         if (page < 0 || size <= 0) {
             throw new IllegalArgumentException("Page number must be >= 0 and size must be > 0");
@@ -67,6 +74,8 @@ public class CarServices {
         Pageable pageable = PageRequest.of(page, size);
         return carRepository.findAll(pageable);
     }
+
+    @Transactional
     public List<Car> getCarsWithSorting(String sortBy, String order) {
         if (!order.equalsIgnoreCase("asc") && !order.equalsIgnoreCase("desc")) {
             throw new IllegalArgumentException("Order must be either 'asc' or 'desc'");
@@ -75,6 +84,7 @@ public class CarServices {
         return carRepository.findAll(sort);
     }
 
+    @Transactional
     public Page<Car> getCarsWithPaginationAndSorting(int page, int size, String sortBy, String order) {
         if (page < 0 || size <= 0) {
             throw new IllegalArgumentException("Page number must be >= 0 and size must be > 0");
