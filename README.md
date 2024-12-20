@@ -3,6 +3,15 @@
 ## Description
 The Car Management System is a RESTful application designed to manage cars and their details, offering features like adding, updating, deleting, searching, pagination, and sorting. The system ensures data integrity through validations and provides a user-friendly interface for developers via APIs.
 
+## Note:
+- Use tools like **Postman** to interact with the Car Management System by sending requests and viewing responses in a user-friendly interface.  
+- For command-line testing, **cURL** or similar tools can be used to simulate API requests.  
+- Ensure the API endpoints are correctly configured to match the deployment URL:  
+  `https://car-management-system-production.up.railway.app`.  
+- All API endpoints are mapped under the base path `api/cars`.  
+  For example:  
+  `https://car-management-system-production.up.railway.app/api/cars/getAllCars`.
+  
 ## Table of Contents
 1. [API Endpoints](#api-endpoints)
     - [Get All Cars](#1-get-all-cars)
