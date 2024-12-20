@@ -170,6 +170,7 @@ The Car Management System is a RESTful application designed to manage cars and t
 - **ModelMapper**: For object mapping between entities and DTOs.
 - **Jakarta Validation**: For input validations.
 - **Maven**: For dependency management.
+- **Mysql**: For database management.
 
 ## Running Locally
 
