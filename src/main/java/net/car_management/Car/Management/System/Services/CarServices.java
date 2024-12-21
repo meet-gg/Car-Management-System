@@ -46,7 +46,13 @@ public class CarServices {
     public CarDTO updateCarById(Long id, CarDTO carDTO) {
         Car excar = carRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Car not found with ID: " + id));
-        modelMapper.map(carDTO, excar);
+        excar.setCarName(carDTO.getCarName());
+        excar.setCarModel(carDTO.getCarModel());
+        excar.setCarYear(carDTO.getCarYear());
+        excar.setCarPrice(carDTO.getCarPrice());
+        excar.setCarFuelType(carDTO.getCarFuelType());
+        excar.setCarColor(carDTO.getCarColor());
+
         Car updatedCar = carRepository.save(excar);
 
         return modelMapper.map(updatedCar, CarDTO.class);
