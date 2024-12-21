@@ -3,6 +3,15 @@
 ## Description
 The Car Management System is a RESTful application designed to manage cars and their details, offering features like adding, updating, deleting, searching, pagination, and sorting. The system ensures data integrity through validations and provides a user-friendly interface for developers via APIs.
 
+## Note:
+- Use tools like **Postman** to interact with the Car Management System by sending requests and viewing responses in a user-friendly interface.  
+- For command-line testing, **cURL** or similar tools can be used to simulate API requests.  
+- Ensure the API endpoints are correctly configured to match the deployment URL:  
+  `https://car-management-system-production.up.railway.app`.  
+- All API endpoints are mapped under the base path `api/cars`.  
+  For example:  
+  `https://car-management-system-production.up.railway.app/api/cars/getAllCars`.
+  
 ## Table of Contents
 1. [API Endpoints](#api-endpoints)
     - [Get All Cars](#1-get-all-cars)
@@ -56,6 +65,12 @@ The Car Management System is a RESTful application designed to manage cars and t
     - Hybrid
     - CNG
     - LPG
+    - petrol
+    - diesel
+    - electric
+    - hybrid
+    - cng
+    - lpg
 
 ### 3. Update Car by ID
 - **URL**: `https://car-management-system-production.up.railway.app/api/cars/updateCarById/{id}`
@@ -66,6 +81,7 @@ The Car Management System is a RESTful application designed to manage cars and t
 - **Request Body**:
     ```json
     {
+      "id":41,
       "carName": "Tesla Model X",
       "carModel": "Model X",
       "carColor": "Black",
@@ -95,6 +111,8 @@ The Car Management System is a RESTful application designed to manage cars and t
   - `color`: Color of the car.
   - `fuelType`: Fuel type of the car.
 - **Response**: Returns a list of cars matching the criteria.
+  
+![Sample Api](https://github.com/meet-gg/Currency-Converter/blob/main/Screenshot%202024-12-20%20170822.png)
 
 ### 6. Get Cars with Pagination
 - **URL**: `https://car-management-system-production.up.railway.app/api/cars/pagination`
@@ -105,6 +123,8 @@ The Car Management System is a RESTful application designed to manage cars and t
   - `size` (default: 10): Number of records per page.
 - **Response**: Returns a paginated list of cars.
 
+![Sample Api](https://github.com/meet-gg/Currency-Converter/blob/main/Screenshot%202024-12-20%20171329.png)
+
 ### 7. Get Cars with Sorting
 - **URL**: `https://car-management-system-production.up.railway.app/api/cars/sorting`
 - **Method**: `GET`
@@ -113,6 +133,8 @@ The Car Management System is a RESTful application designed to manage cars and t
   - `sortBy` (default: `carName`): Field to sort by.
   - `order` (default: `asc`): Sorting order. (`asc` or `desc`)
 - **Response**: Returns a sorted list of cars.
+
+![Sample Api](https://github.com/meet-gg/Currency-Converter/blob/main/Screenshot%202024-12-20%20171523.png)
 
 ### 8. Get Cars with Pagination and Sorting
 - **URL**: `https://car-management-system-production.up.railway.app/api/cars/pagination-sorting`
@@ -124,6 +146,8 @@ The Car Management System is a RESTful application designed to manage cars and t
   - `sortBy` (default: `carName`): Field to sort by.
   - `order` (default: `asc`): Sorting order. (`asc` or `desc`)
 - **Response**: Returns a paginated and sorted list of cars.
+
+![Sample Api](https://github.com/meet-gg/Currency-Converter/blob/main/Screenshot%202024-12-20%20171806.png)
 
 ## Validations
 
@@ -147,6 +171,7 @@ The Car Management System is a RESTful application designed to manage cars and t
 - **ModelMapper**: For object mapping between entities and DTOs.
 - **Jakarta Validation**: For input validations.
 - **Maven**: For dependency management.
+- **Mysql**: For database management.
 
 ## Running Locally
 
